@@ -37,6 +37,7 @@
             <div class="col-6">
                 <p>{{ product.description }}</p>
                 <p>Catégorie : {{ product.categories.name }}</p>
+                <p>Quantité: {{ product.stock }}</p>
                 <p>Prix : {{ product.price / 100 }} €</p>
                 {% if product.stock > 0 %}
                     <a href="#" class="btn btn-success">Ajouter au panier</a>

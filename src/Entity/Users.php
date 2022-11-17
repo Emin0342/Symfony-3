@@ -48,11 +48,15 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 150)]
     private $city;
 
+    #[ORM\Column(type: 'string', length: 150)]
+    private $telephone;
+
     #[ORM\Column(type: 'boolean')]
     private $is_verified = false;
 
     #[ORM\Column(type: 'string', length: 100)]
-    private $resetToken;
+    #[ORM\JoinColumn(nullable: true)]
+    private $resetToken = null;
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Orders::class)]
     private $orders;
