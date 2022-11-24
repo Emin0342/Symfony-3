@@ -32,6 +32,9 @@ class Products
     #[ORM\Column(type: 'integer')]
     private $stock;
 
+    #[ORM\Column(type: 'integer')]
+    private $poids;
+
     #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private $categories;
@@ -41,6 +44,7 @@ class Products
 
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: OrdersDetails::class)]
     private $ordersDetails;
+
 
     public function __construct()
     {
@@ -98,6 +102,18 @@ class Products
     public function setStock(int $stock): self
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getPoids(): ?int
+    {
+        return $this->poids;
+    }
+
+    public function setPoids(int $poids): self
+    {
+        $this->poids = $poids;
 
         return $this;
     }
@@ -173,4 +189,5 @@ class Products
 
         return $this;
     }
+
 }

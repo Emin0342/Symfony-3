@@ -37,12 +37,25 @@
             <div class="col-6">
                 <p>{{ product.description }}</p>
                 <p>Catégorie : {{ product.categories.name }}</p>
+                <p>Poids : {{ product.poids }} KG</p>
+                {% if product.stock > 0 %}
+                <div class="alert alert-success" role="alert">
+                    Produit en stock !
+                  </div>
+                {% elseif product.stock == 1  %}
+                <div class="alert alert-warning" role="alert">
+                    C'est votre derniere chance il ne reste qu'un produit en stocks ! 
+                  </div>
+               
+                 {% endif %}
                 <p>Quantité: {{ product.stock }}</p>
                 <p>Prix : {{ product.price / 100 }} €</p>
                 {% if product.stock > 0 %}
                     <a href="#" class="btn btn-success">Ajouter au panier</a>
                 {% else %}
-                    <p class="text-danger">Temporairement en rupture de stock</p>
+                <div class="alert alert-danger" role="alert">
+                    Temporairement en rupture de stock
+                  </div>
                 {% endif %}
             </div>
         </section>

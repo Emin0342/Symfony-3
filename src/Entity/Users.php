@@ -48,15 +48,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 150)]
     private $city;
 
-    #[ORM\Column(type: 'string', length: 150)]
-    private $telephone;
+    #[ORM\Column(type: 'integer')]
+    private $telephone = null;
 
     #[ORM\Column(type: 'boolean')]
     private $is_verified = false;
 
-    #[ORM\Column(type: 'string', length: 100)]
-    #[ORM\JoinColumn(nullable: true)]
-    private $resetToken = null;
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Orders::class)]
     private $orders;
@@ -197,6 +194,17 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getTelephone(): ?int
+    {
+        return $this->poids;
+    }
+
+    public function setTelephone(int $telephone): self
+    {
+        $this->telephone = $telephone;
+        return $this;
+    }
+
     public function getIsVerified(): ?bool
     {
         return $this->is_verified;
@@ -209,17 +217,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getResetToken(): ?string
-    {
-        return $this->resetToken;
-    }
-
-    public function setResetToken(?string $resetToken): self
-    {
-        $this->resetToken = $resetToken;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Orders[]

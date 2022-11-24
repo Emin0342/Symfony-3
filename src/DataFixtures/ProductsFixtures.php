@@ -24,6 +24,7 @@ class ProductsFixtures extends Fixture
             $product->setSlug($this->slugger->slug($product->getName())->lower());
             $product->setPrice($faker->numberBetween(900, 150000));
             $product->setStock($faker->numberBetween(0, 10));
+            $product->setPoids($faker->numberBetween(0, 10));
 
             //On va chercher une référence de catégorie
             $category = $this->getReference('cat-'. rand(1, 8));
