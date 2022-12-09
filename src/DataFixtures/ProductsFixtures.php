@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Products;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Faker;
@@ -14,6 +15,18 @@ class ProductsFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        $product = new Products();
+            $product->setName("MSI 29.5 LED - Optix MAG301CR2");
+            $product->setReference;
+            $product->setDescription("L'écran gaming MSI Optix MAG301CR2 est doté d'une dalle VA incurvée de 29.5 pouces avec résolution WFHD pour vous transporter au coeur de l'action. Découvrez des performances à la hauteur de vos objectifs (1 ms, 200 Hz, FreeSync).");
+            $product->setSlug($this->slugger->slug($product->getName())->lower());
+            $product->setPrice(379);
+            $category = $this->getReference('cat-'.(3));
+            $product->setCategories($category);
+            $product->setStock(21);
+            $product->setPoids(3);
+            $manager->persist($product);
+
         // use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create('fr_FR');
 
@@ -35,5 +48,9 @@ class ProductsFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function createProduct(ManagerRegistry $doctrine){
+
     }
 }

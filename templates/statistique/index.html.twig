@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StatistiqueController!{% endblock %}
+
+{# Récupération des données depuis la base de données en utilisant PHP #}
+{% set categories = getCategories() %}
+
+{# Tri des catégories par ordre alphabétique en utilisant la fonction sort #}
+{% set sortedCategories = categories|sort(attribute='name') %}
+
+{# Affichage des noms de catégories triées en utilisant une boucle for #}
+{% for category in sortedCategories %}
+  <p>{{ category.name }}</p>
+{% endfor %}
+
+{% endblock %}

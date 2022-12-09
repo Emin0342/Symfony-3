@@ -196,7 +196,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getTelephone(): ?int
     {
-        return $this->poids;
+        return $this->telephone;
     }
 
     public function setTelephone(int $telephone): self
