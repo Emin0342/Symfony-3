@@ -22,11 +22,11 @@ class ImagesFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($image);
         }
             $image = new Images();
-            $image->setName("ecran3");
-            $product = $this->getReference('ecrant3.jpg');
-            $image->setProducts($product);
+            $image->setName("ecran04.jpg");
+            $product = $this->getReference('msi');
+            $image->setProducts($product);                                                                                                                                                                                              
             $manager->persist($image);
-        $manager->flush();
+            $manager->flush();
     }
 
     public function getDependencies(): array
