@@ -8,16 +8,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class StatistiqueController extends AbstractController
+class ProductsEcransController extends AbstractController
 {
-    #[Route('/statistique', name: 'app_statistique')]
+    #[Route('/products/ecrans', name: 'app_products_ecrans')]
     public function index(CategoriesRepository $categoriesRepository, ProductsRepository $productsRepository): Response
     {
-        return $this->render('statistique/index.html.twig', [
+        return $this->render('products_ecrans/index.html.twig', [
+            'controller_name' => 'ProductsEcransController',
             'categories' => $categoriesRepository->findBy([], ['name' => 'asc']),
             'produits' => $productsRepository->findByPriceUnder(50),
             'presetProduits' => $productsRepository->getProduitsOfCategory("Ecrans"),
-
         ]);
     }
 }

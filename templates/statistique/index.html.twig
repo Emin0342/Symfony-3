@@ -22,5 +22,46 @@
                 {% endif %}
             {% endfor %}
         </section>
+          <section class="row">
+            <div class="col-12">
+                <h1>Produits -50€</h1>
+            </div>
+            {% for product in produits %}
+                <div class="col-5 mb-3">
+                    <article class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ product.name }}</h2>
+                            <p class="card-text">{{ product.description }}</p>
+                            <a href="{{ path('products_details', {"slug": product.slug }) }}" class="btn btn-primary position-relative">Voir les détails
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ product.price / 100 }} €
+                                </span>
+                            </a>
+                        </div>
+                        <span class="badge badge-pill badge-primary">Primary</span>
+                    </article>
+                </div>
+            {% endfor %}
+        </section>
+
+        <section class="row">
+            <div class="col-12">
+                <h1>Produits Ecrans</h1>
+            </div>
+            {% for presetProduit in presetProduits %}
+                <div class="col-5 mb-3">
+                    <article class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ presetProduit.name }}</h2>
+                            <p class="card-text">{{ presetProduit.description }}</p>
+                            <a href="{{ path('products_details', {"slug": presetProduit.slug }) }}" class="btn btn-primary position-relative">Voir les détails
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </section>
+
+        
     </main>
 {% endblock %}
